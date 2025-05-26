@@ -11,28 +11,40 @@ int main() {
     int navioHorizontal[TAM_NAVIO] = {VALOR_NAVIO, VALOR_NAVIO, VALOR_NAVIO};
     int navioVertical[TAM_NAVIO] = {VALOR_NAVIO, VALOR_NAVIO, VALOR_NAVIO};
 
-    int linhaH = 2; 
-    int colunaH = 4; 
+    // Ajuste para o posicionamento igual ao print:
+    // Navio vertical: linha 6, coluna J
+    // Navio horizontal: linha 7, colunas H, I, J
 
-    int linhaV = 5; 
-    int colunaV = 7; 
+    // Coordenadas navio vertical (coluna 9)
+    int linhaV = 5; // linha 6 no print
+    int colunaV = 9; // coluna J (index 9)
 
-    for (int i = 0; i < TAM_NAVIO; i++) {
-        if (colunaH + i < TAM_TABULEIRO) {
-            tabuleiro[linhaH][colunaH + i] = navioHorizontal[i];
-            printf("Navio Horizontal - Parte %d: (%d, %d)\n", i + 1, linhaH, colunaH + i);
-        }
-    }
+    // Coordenadas navio horizontal (linha 7)
+    int linhaH = 6; // linha 7 no print
+    int colunaH = 7; // coluna H (index 7)
 
     for (int i = 0; i < TAM_NAVIO; i++) {
         if (linhaV + i < TAM_TABULEIRO) {
             tabuleiro[linhaV + i][colunaV] = navioVertical[i];
-            printf("Navio Vertical - Parte %d: (%d, %d)\n", i + 1, linhaV + i, colunaV);
         }
     }
 
-    printf("\nTabuleiro de Batalha Naval:\n\n");
+    for (int i = 0; i < TAM_NAVIO; i++) {
+        if (colunaH + i < TAM_TABULEIRO) {
+            tabuleiro[linhaH][colunaH + i] = navioHorizontal[i];
+        }
+    }
+
+    // Exibição com letras e números
+    printf("TABULEIRO BATALHA NAVAL\n\n  ");
+    for (char letra = 'A'; letra <= 'J'; letra++) {
+        printf(" %c", letra);
+    }
+    printf("\n");
+
     for (int i = 0; i < TAM_TABULEIRO; i++) {
+        printf("%2d ", i + 1); // Numeração das linhas
+
         for (int j = 0; j < TAM_TABULEIRO; j++) {
             printf("%d ", tabuleiro[i][j]);
         }
